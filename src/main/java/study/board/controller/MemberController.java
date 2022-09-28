@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import study.board.domain.Role;
 import study.board.dto.MemberDto;
 import study.board.service.MemberService;
@@ -39,5 +40,11 @@ public class MemberController {
 
         memberService.createMember(memberDto);
         return "/home";
+    }
+
+    @ResponseBody
+    @PostMapping("/signUp/checkId")
+    public int checkId(@RequestBody MemberDto memberDto){
+        return memberService.checkId(memberDto);
     }
 }
