@@ -27,4 +27,9 @@ public class MemberService {
         }
         return memberRepository.save(memberDto.toEntity());
     }
+
+    public int checkId(MemberDto memberDto) {
+        int findUsernameCnt = memberRepository.countByUsername(memberDto.getUsername());
+        return findUsernameCnt;
+    }
 }
